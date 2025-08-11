@@ -1,7 +1,8 @@
 const grid = document.querySelector("#grid");
-const width = window.innerWidth / 16;
-const height = window.innerHeight / 16;
-const permanent = "width: " + width + "px; height: " + height + "px;"
+const dimension = 16;
+const gridSize = 600;
+const side = gridSize / dimension;
+const permanent = "width: " + side + "px; height: " + side + "px;"
 let id = 0;
 let innerID = 0;
 

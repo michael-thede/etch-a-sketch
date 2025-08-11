@@ -1,12 +1,29 @@
-.grid{
+#body{
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+#grid{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 600px;
+    border: 5px solid black;
 }
 
 .outerDiv{
     display: flex;
+    justify-content: center;
+    width: 600px;
+    height: 37.5px;
 }
 
 .innerDiv{
     background-color: white;
+}
+
+#button{
+    justify-self: center;
+    margin: 10px;
 }
