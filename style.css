@@ -1,0 +1,12 @@
+.grid{
+    display: flex;
+    flex-direction: column;
+}
+
+.outerDiv{
+    display: flex;
+}
+
+.innerDiv{
+    border-color: black;
+}
