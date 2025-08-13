@@ -1,35 +1,42 @@
 const grid = document.querySelector("#grid");
 const button = document.querySelector("#button");
-const dimension = 16;
 const gridSize = 600;
-const side = gridSize / dimension;
-const permanent = "width: " + side + "px; height: " + side + "px;";
 let id = 0;
 let innerID = 0;
 
-function highlight(element){
-    element.setAttribute("style", "background-color: blue; " + permanent);
+function highlight(element, style){
+    element.setAttribute("style", "background-color: blue; " + style);
 }
 
-function lowlight(element){
-    element.setAttribute("style", "background-color: white; " + permanent);
+function lowlight(element, style){
+    element.setAttribute("style", "background-color: white; " + style);
 }
 
-for(let i = 0; i < 16; i++){
-    const div = document.createElement("div");
-    div.setAttribute("id", "div" + id);
-    div.setAttribute("class", "outerDiv");
-    for(let j = 0; j < 16; j++){
-        const innerDiv = document.createElement("div");
-        innerDiv.setAttribute("id", "innerDiv" + innerID);
-        innerDiv.setAttribute("class", "innerDiv");
-        innerDiv.setAttribute("style", permanent);
-        innerDiv.addEventListener("mouseenter", () => highlight(innerDiv));
-        innerDiv.addEventListener("mouseleave", () => lowlight(innerDiv));
-        div.appendChild(innerDiv);
-        innerID++;
-    }
+function makeGrid(dimension){
+    let side = gridSize / dimension;
+    let permanent = "width: " + side + "px; height: " + side + "px;";
+    for(let i = 0; i < dimension; i++){
+        const div = document.createElement("div");
+        div.setAttribute("id", "div" + id);
+        div.setAttribute("class", "outerDiv");
+        for(let j = 0; j < dimension; j++){
+            const innerDiv = document.createElement("div");
+            innerDiv.setAttribute("id", "innerDiv" + innerID);
+            innerDiv.setAttribute("class", "innerDiv");
+            innerDiv.setAttribute("style", permanent);
+            innerDiv.addEventListener("mouseenter", () => highlight(innerDiv, permanent));
+            innerDiv.addEventListener("mouseleave", () => lowlight(innerDiv, permanent));
+            div.appendChild(innerDiv);
+            innerID++;
+        }
     innerID = 0;
     id++;
     grid.appendChild(div);
+    }
+    id = 0;
+    innerID = 0;
 }
+
+makeGrid(16);
+
+
